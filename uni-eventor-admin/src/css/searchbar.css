@@ -1,0 +1,5 @@
+textarea, input, button { outline: none; }
+.textbox-wrapper {
+    padding-left: 12% !important;
+    padding-right: 12%;
+}
