@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3.CSS Template</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1254">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    html, body, h1, h2, h3, h4, h5, h6 {
+        font-family: "Roboto", sans-serif;
+    }
+</style>
+
+    <script>
+        function openCity(evt, cityName) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("city");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" w3-border-red", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.firstElementChild.className += " w3-border-red";
+        }
+		 // Accordion
+    function myFunction(id) {
+        var x = document.getElementById(id);
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+            x.previousElementSibling.className += " w3-theme-d1";
+        } else {
+            x.className = x.className.replace("w3-show", "");
+            x.previousElementSibling.className =
+                x.previousElementSibling.className.replace(" w3-theme-d1", "");
+        }
+    }
+
+    // Used to toggle the menu on smaller screens when clicking on the menu button
+    function openNav() {
+        var x = document.getElementById("navDemo");
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+        } else {
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+
+    function myComments(id) {
+        var x = document.getElementById(id);
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+        } else {
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+    function UploadImage() {
+        $("#upfile1").click(function () {
+            $("#file1").click();
+        });
+    }
+    </script>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <div class="w3-top">
+        <div class="w3-bar w3-theme-d2 w3-left-align">
+            <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+            <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Logo</a>
+            <a href="#team" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Team</a>
+            <a href="#work" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Work</a>
+            <a href="#pricing" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Price</a>
+            <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
+            <div class="w3-dropdown-hover w3-hide-small">
+                <button class="w3-button" title="Notifications">Dropdown <i class="fa fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+                    <a href="#" class="w3-bar-item w3-button">Link</a>
+                    <a href="#" class="w3-bar-item w3-button">Link</a>
+                    <a href="#" class="w3-bar-item w3-button">Link</a>
+                </div>
+            </div>
+            <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal" title="Search"><i class="fa fa-search"></i></a>
+        </div>
+
+        <!-- Navbar on small screens -->
+        <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium">
+            <a href="#team" class="w3-bar-item w3-button">Team</a>
+            <a href="#work" class="w3-bar-item w3-button">Work</a>
+            <a href="#pricing" class="w3-bar-item w3-button">Price</a>
+            <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+            <a href="#" class="w3-bar-item w3-button">Search</a>
+        </div>
+    </div>
+    </br><!-- koymamak gerek -->
+
+    <!-- Üst yazı on small screens -->
+    <div class="w3-row-padding">
+       <!--  <h1>Sakarya Coders Etkinligi</h1> -->
+    </div>
+	<div style="margin-top:20px;">
+		
+<div class="w3-row">
+    <!-- Left Column -->
+    <div class="w3-col m3">
+        <!-- Profile -->
+        <div class="w3-card-2 w3-round w3-white">
+            <div class="w3-container">
+                <!-- <h4 class="w3-center">Etkinlik Adı</h4> -->
+                <p class="w3-center">
+                   
+                        <img src="https://about.canva.com/wp-content/uploads/sites/3/2015/01/concert_poster.png" style="width: 90%" class="w3-round">
+                   
+                </p>
+                
+                <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>Sakarya Üniversitesi </p>
+                <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>Bilgisayar Topluluğu</p>
+            </div>
+        </div>
+        <br>
+
+        <!-- Accordion -->
+        <div class="w3-card-2 w3-round">
+           
+        </div>
+        <br>
+
+        <!-- Interests -->
+        <div class="w3-card-2 w3-round w3-white w3-hide-small">
+            <div class="w3-container">
+                <div class="w3-row-padding">
+                    <div class="w3-col s3">
+                        <p>Interests</p>
+                    </div>
+                       
+                </div>
+                <p>
+                   
+                            <span class="w3-tag w3-small w3-theme-d5">@interests.Title</span>
+                      
+                        <span class="w3-tag w3-small @theme">@Model.Interests.ElementAt(i).Title</span>
+                    
+                </p>
+            </div>
+        </div>
+        <br>
+
+    </div>
+
+    <!-- Middle Column -->
+    <div class="w3-col m7">
+
+        <div class="w3-row-padding">
+            <div class="w3-col m12">
+                <div class="w3-card-2 w3-round w3-white">
+						<div class="w3-container w3-padding">
+							<!-- <h6 class="w3-opacity">Saü Bilişim Günleri</h6> -->
+							<h4 >Saü Bilişim Günleri</h4>
+							<div class="w3-row">
+								<a href="javascript:void(0)" onclick="openCity(event, 'Icerik');">
+									<div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">İçerik</div>
+								</a>
+								<a href="javascript:void(0)" onclick="openCity(event, 'Harita');">
+									<div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Harita</div>
+								</a>
+
+							</div>
+
+							<div id="Icerik" class="w3-container city" style="display: none">
+								<h2>Icerik</h2>
+								<p>Global markalar senin için kampüse geliyor ve markalaşmayı anlatıyor! Konu başlıklarımız neler? 
+								? Globalleşen dünyada değeri gitgide artan ?markalaşmayı? anlamak. 
+								? Markalaşan başarılı şirketlerin hikayelerini dinlemek, ilham almak. 
+								? Aktif olarak iş hayatında yıllarını harcamış başarılı yöneticilerin tecrübelerini, kariyerine henüz başlamakta olan gençlerle paylaşması.
+								? Global markalaşma nedir, nasıl olur bunları global markalardan dinlemek. 
+								? Nasıl bir kariyer haritası izleyeceğini bilemeyen öğrencilere ilham vermek.
+								Katılımcı Markalar, Koç Bilişim Mercedes Metro UPS</p>
+							</div>
+
+							<div id="Harita" class="w3-container city" style="display: none">
+								<h1>Harita</h1>
+							<iframe src = "https://maps.google.com/maps?q=40.7413232,30.3296314&hl=es;z=14&amp;output=embed" width="600" height="450" frameborder="0" style="border:0"></iframe></div>
+
+						</div>
+				</div>
+            </div>
+        </div>
+
+        
+    </div>
+    <!-- End Middle Column -->
+    <!-- Right Column -->
+    <div class="w3-col m2">
+        <div class="w3-card-2 w3-round w3-white w3-center">
+            <div class="w3-container">
+                <p>Yaklaşan Etkinlik:</p>
+                <img src="http://comp.eng.ankara.edu.tr/files/2014/03/intro.jpg" alt="Forest" style="width:100%;">
+                <p><strong>Sakarya Üniversitesi</strong></p>
+                <p>Cuma 15:00</p>
+                <p><button onclick="document.getElementById('idEvent').style.display='block'" class="w3-btn w3-btn-block w3-theme-l4">Etkinliğe Git</button></p>
+            </div>
+        </div>
+        <br>
+
+        <div class="w3-card-2 w3-round w3-white w3-center">
+            <div class="w3-container">
+                <p>Bu Etkinliğe Gidenler</p>
+                <img src="http://www.lovemarks.com/wp-content/uploads/profile-avatars/default-avatar-plaid-shirt-guy.png" alt="Avatar" style="width:50%"><br>
+                <span>Jane Doe</span>
+				<br>
+               <img src="http://www.lovemarks.com/wp-content/uploads/profile-avatars/default-avatar-plaid-shirt-guy.png" alt="Avatar" style="width:50%"><br>
+                <span>Jane Doe</span>
+				<br>
+				<img src="http://www.lovemarks.com/wp-content/uploads/profile-avatars/default-avatar-plaid-shirt-guy.png" alt="Avatar" style="width:50%"><br>
+                <span>Jane Doe</span>
+				<br>
+				<img src="http://www.lovemarks.com/wp-content/uploads/profile-avatars/default-avatar-plaid-shirt-guy.png" alt="Avatar" style="width:50%"><br>
+                <span>Jane Doe</span>
+            </div>
+        </div>
+        <br>
+
+        <div class="w3-card-2 w3-round w3-white w3-padding-16 w3-center">
+            <img src="http://www.haber.sakarya.edu.tr/kutuphane/download/logo/dikeylogo.png" alt="Avatar" style="width:50%"><br>
+        </div>
+        <br>
+
+        <div class="w3-card-2 w3-round w3-white w3-padding-32 w3-center">
+            <p><i class="fa fa-bug w3-xxlarge"></i></p>
+        </div>
+
+
+        <!-- End Right Column -->
+    </div>
+
+	</div>
+	
+
+
+</body>
