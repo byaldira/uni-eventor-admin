@@ -8,7 +8,7 @@ class Role extends Component {
             height: '400px'
         };
         return (
-            <h2>Community</h2>
+            <h2>Role</h2>
         );
     }
 }

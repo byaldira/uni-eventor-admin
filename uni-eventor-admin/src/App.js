@@ -12,8 +12,8 @@ class App extends Component {
             <div className="App">
                     <div className="w3-bar w3-top w3-black w3-large zindex4" >
                     <button className="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i className="fa fa-bars"></i> &nbsp;Menu</button>
-                    <span className="w3-bar-item w3-right"> <IndexLink  className="w3-bar-item w3-button w3-hover-teal" to="/">UniEventor</IndexLink></span>
-                    </div>
+                        <IndexLink  className="w3-bar-item w3-right w3-bar-item w3-button w3-hover-teal" to="/">UniEventor</IndexLink>
+                   </div>
                     <nav className="w3-sidebar w3-collapse w3-white w3-animate-left zindex4w300"  id="mySidebar"><br></br>
                         <div className="w3-container w3-row">
                             <div className="w3-col s4">
@@ -21,9 +21,9 @@ class App extends Component {
                             </div>
                             <div className="w3-col s8 w3-bar">
                             <span>Merhaba, <strong>Burak</strong></span><br></br>
-                            <a href="#" className="w3-bar-item w3-button"><i className="fa fa-envelope"></i></a>
-                            <a href="#" className="w3-bar-item w3-button"><i className="fa fa-user"></i></a>
-                            <a href="settings.html" className="w3-bar-item w3-button"><i className="fa fa-cog"></i></a>
+                            <Link to="/" className="w3-bar-item w3-button"><i className="fa fa-envelope"></i></Link>
+                            <Link to="/" className="w3-bar-item w3-button"><i className="fa fa-user"></i></Link>
+                            <Link to="/settings.html" className="w3-bar-item w3-button"><i className="fa fa-cog"></i></Link>
                             </div>
                         </div>
                         <hr></hr>
@@ -39,7 +39,10 @@ class App extends Component {
                           
                         </div>
                         </nav>
-                {this.props.children}
+                        <div className="w3-main adminLayout">
+                         {this.props.children}
+                        </div>
+                        
             </div>
         );
     }
