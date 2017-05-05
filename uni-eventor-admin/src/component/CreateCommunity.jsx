@@ -27,7 +27,7 @@ class CreateCommunity extends Component {
 
                 <div className="w3-row ">
                     <div className="w3-threequarter">
-                        <div clasclassNames="w3-container w3-right">
+                        <div classNames="w3-container w3-right">
                             <button className="w3-btn w3-ripple w3-green">Topluluk Ekle</button>
                         </div>
                     </div>
