@@ -7,7 +7,7 @@ import './css/font-awesome.min.css'
 class App extends Component {
     
     render() {
-         
+        
         return (
             <div className="App">
                     <div className="w3-bar w3-top w3-black w3-large zindex4" >
@@ -23,7 +23,7 @@ class App extends Component {
                             <span>Merhaba, <strong>Burak</strong></span><br></br>
                             <Link to="/" className="w3-bar-item w3-button"><i className="fa fa-envelope"></i></Link>
                             <Link to="/" className="w3-bar-item w3-button"><i className="fa fa-user"></i></Link>
-                            <Link to="/settings.html" className="w3-bar-item w3-button"><i className="fa fa-cog"></i></Link>
+                            <Link to="/settings" className="w3-bar-item w3-button"><i className="fa fa-cog"></i></Link>
                             </div>
                         </div>
                         <hr></hr>

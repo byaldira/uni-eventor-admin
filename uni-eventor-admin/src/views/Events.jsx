@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import '../css/w3.css';
 import CreateEvent from '../component/CreateEvent.jsx'
+import CreateEventType from '../component/CreateEventType.jsx'
+import CreateEventInterest from '../component/CreateEventInterest.jsx'
+
 class Events extends Component {
      handleClick = (e, cityName) => {
         // e burada click icin bildigimiz event nesnesi
@@ -27,7 +30,7 @@ class Events extends Component {
             <div>
                  <div className="w3-row">
                     <span onClick={(e) => this.handleClick('Etkinlik', this).bind(this)}>
-                        <div className="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Etkinlik</div>
+                        <div className="w3-third tablink w3-border-red w3-bottombar w3-hover-light-grey w3-padding">Etkinlik</div>
                     </span>
                       <span onClick={(e) => this.handleClick('EtkinlikTipi', this).bind(this)}>
                         <div className="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Etkinlik Tipi</div>
@@ -37,10 +40,15 @@ class Events extends Component {
                     </span>
                     
                 </div>
-              <div id="Etkinlik" class="w3-container city" >
+              <div id="Etkinlik" className="w3-container city" >
                     <CreateEvent />
-                </div>
-               
+              </div>
+              <div id="EtkinlikTipi" className="w3-container city" style={displaynone}>
+                  <CreateEventType />
+              </div>
+               <div id="EtkinlikAlani" className="w3-container city" style={displaynone}>
+                   <CreateEventInterest/>
+               </div>
             </div>
         );
     }

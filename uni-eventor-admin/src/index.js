@@ -10,6 +10,7 @@ import Community from './views/Community.jsx';
 import Role from './views/Role.jsx';
 import Profile from './views/Profile.jsx';
 import Events from './views/Events.jsx';
+import Settings from './views/Settings.jsx'
 ReactDOM.render(
   <Router history={browserHistory}>
     <Route path="/" component={App}>
@@ -18,6 +19,7 @@ ReactDOM.render(
       <Route path="university" component={University} />
       <Route path="role" component={Role} />
       <Route path="event" component={Events} />
+       <Route path="settings" component={Settings} />
     </Route>
   </Router>,
   document.getElementById('root')
