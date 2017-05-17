@@ -19,9 +19,7 @@ class Community extends Component {
 
     }
     render() {
-        var displaynone = {
-            display: 'none'
-        };
+       
         return (
             <div>
 

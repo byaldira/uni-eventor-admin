@@ -5,9 +5,7 @@ import Map from '../component/Map.jsx';
 
 class CreateEvent extends Component {
     render() {
-        var displaynone = {
-            display: 'none'
-        };
+        
         var resizenone = {
             resize:'none'
         };

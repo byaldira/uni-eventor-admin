@@ -31,7 +31,7 @@ class CreateFaculty extends Component {
             </div>
             <div className="w3-row w3-section">
                 <div className="w3-container w3-half">
-                        <textarea className="w3-input w3-border w3-padding resizenone" placeholder="Fakülte Adres"></textarea>
+                        <textarea className="w3-input w3-border w3-padding " style={resizenone} placeholder="Fakülte Adres"></textarea>
                 </div>
             </div>
             <div className="w3-row ">

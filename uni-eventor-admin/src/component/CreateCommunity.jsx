@@ -5,9 +5,7 @@ import '../css/w3.css';
 
 class CreateCommunity extends Component {
     render() {
-        var displaynone = {
-            display: 'none'
-        };
+        
         return (
             <div>
 
