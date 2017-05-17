@@ -21,20 +21,47 @@ class CreateCommunity extends Component {
         // Fill User Information from api 
     }
 
+     handleCommunityNameChange(event) {
+        var CommunityName = event.target.value;
+        var currentTime = new  Date().toLocaleString();
+        this.setState(prevState => ({
+            CommunityId: prevState.CommunityId,
+            CommunityName: CommunityName , 
+            DateCreated: currentTime,
+            LastUpdated:currentTime , 
+            FkCreatorId : 'testuser', 
+            FkResponsibleId : 'testuser'
+        }));
+        
+    }
 
+     handleFkResponsibleIdChange(event) {
+        var FkResponsibleId = event.target.value;
+        var currentTime = new  Date().toLocaleString();
+        this.setState(prevState => ({
+            CommunityId: prevState.CommunityId,
+            CommunityName: prevState.CommunityName , 
+            DateCreated: currentTime,
+            LastUpdated:currentTime , 
+            FkCreatorId : 'testuser', 
+            FkResponsibleId : FkResponsibleId
+        }));
+        
+    }
     render() {
         
         return (
             <div>
+            <form className="w3-text-blue-gray" onSubmit={this.submitHandler.bind(this)}>
 
                 <h2>Topluluk Tanimlama</h2>
                 <div className="w3-row w3-section">
                     <div className="w3-threequarter">
                         <div className="w3-container w3-half">
-                            <input className="w3-input w3-border w3-padding" type="text" placeholder="Topluluk Adi" id="txtCommunityName" />
+                            <input className="w3-input w3-border w3-padding" type="text" placeholder="Topluluk Adi"  onChange={this.handleCommunityNameChange.bind(this)} id="txtCommunityName" />
                         </div>
                         <div className="w3-container w3-half">
-                            <input className="w3-input w3-border w3-padding" type="text" placeholder="Topluluk Baskani Kullanici Adi" id="txtUniName" />
+                            <input className="w3-input w3-border w3-padding" type="text" placeholder="Topluluk Baskani Kullanici Adi" onChange={this.handleFkResponsibleIdChange.bind(this)}  id="txtUniName" />
                         </div>
                     </div>
                     <div className="w3-quarter"></div>
@@ -50,7 +77,7 @@ class CreateCommunity extends Component {
                 </div>
 
                 <br></br>
-
+            </form>
             </div>
 
         );
