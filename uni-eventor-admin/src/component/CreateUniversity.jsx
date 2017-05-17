@@ -12,25 +12,29 @@ class CreateUniversity extends Component {
             Address: '',
             Website:''
         };
+         AuthModule.login('testuser', 'Cem.123', () => {
+                alert('Giriş yapıldı')
+        }, (error) => {
+                alert('failed');
+            });
     }
 
     submitHandler(e) {
         e.preventDefault();
         
-        AuthModule.login('testuser', 'Cem.123', () => {
-                //this.props.router.push('/');
-                alert('Giriş yapıldı')
-        }, (error) => {
-                // this.setState(prevState => ({
-                //     username: prevState.username,
-                //     password: prevState.password,
-                //     error: 'User doesn\'t exist or username and password does not match'
-                // }));
-                alert('failed');
-            });
+        // alert(this.refs.txtUniversityCode.value);
+        // alert(this.refs.txtUniversityName.value);
+        // alert(this.refs.txtWebSite.value);
+        // alert(this.refs.txtUniversityAddress.value);
 
-        makeApiRequest('POST' , 'api/UniversityApi' , this.state ,(data)=>{
-            alert('Üniversite Eklendi' + data)
+        var newUniversity = {
+             UniversityId: this.refs.txtUniversityCode.value,
+            UniversityName: this.refs.txtUniversityName.value,
+            Address: this.refs.txtUniversityAddress.value,
+            Website:this.refs.txtWebSite.value
+        }
+        makeApiRequest('POST' , 'api/UniversityApi' , newUniversity ,(data)=>{
+            alert('Üniversite Eklendi' )
         },(error)=>{
             alert('Hata Oluştu' + error)
         });
@@ -56,7 +60,6 @@ class CreateUniversity extends Component {
             Address:prevState.Address,
             Website:WebSite
         }));
-       
     }
 
     handleNameChange(event) {
@@ -92,10 +95,10 @@ class CreateUniversity extends Component {
                 <div className="w3-row w3-section">
                     <div className="w3-threequarter">
                         <div className="w3-container w3-quarter">
-                            <input className="w3-input w3-border w3-padding" type="text" onChange={this.handleIdChange.bind(this)}  placeholder="Üniversite Kodu" id="txtUniName"/>
+                            <input className="w3-input w3-border w3-padding" ref="txtUniversityCode" type="text" onChange={this.handleIdChange.bind(this)}  placeholder="Üniversite Kodu" id="txtUniCode"/>
                         </div>
                         <div className="w3-container w3-threequarter">
-                            <input className="w3-input w3-border w3-padding" type="text" onChange={this.handleWebSiteChange.bind(this)} placeholder="Web Sitesi" id="txtUniName"/>
+                            <input className="w3-input w3-border w3-padding" ref="txtWebSite" type="text" onChange={this.handleWebSiteChange.bind(this)} placeholder="Web Sitesi" id="txtWebSite"/>
                         </div>
                     </div>
                      <div className="w3-quarter"></div>	
@@ -105,14 +108,14 @@ class CreateUniversity extends Component {
                 <div className="w3-row w3-section">
                     <div className="w3-threequarter">
                         <div className="w3-container">
-                            <input className="w3-input w3-border w3-padding" type="text" onChange={this.handleNameChange.bind(this)}  placeholder="Üniversite Adı" id="txtUniName"/>
+                            <input className="w3-input w3-border w3-padding" type="text"  ref="txtUniversityName" onChange={this.handleNameChange.bind(this)}  placeholder="Üniversite Adı" id="txtUniName"/>
                         </div>
                     </div>
                 </div>
                 <div className="w3-row w3-section">
                     <div className="w3-threequarter">
                         <div className="w3-container">
-                            <textarea className="w3-input w3-border w3-padding" onChange={this.handleAddressChange.bind(this)} style={resizenone} placeholder="Üniversite Adres"></textarea>
+                            <textarea className="w3-input w3-border w3-padding" ref="txtUniversityAddress" onChange={this.handleAddressChange.bind(this)} style={resizenone} placeholder="Üniversite Adres"></textarea>
                         </div>
                     </div>
                 </div>

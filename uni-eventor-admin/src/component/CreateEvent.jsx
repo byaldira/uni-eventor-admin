@@ -89,7 +89,6 @@ class CreateEvent extends Component {
             Base64Data : prevState.Base64Data , 
             FkEventTypeId : prevState.FkEventTypeId , 
         }));
-        alert(EventEndDate);
     }
     handleMaxSeatsChange(event) {
         var MaxSeats = event.target.value;
@@ -109,7 +108,6 @@ class CreateEvent extends Component {
             Base64Data : prevState.Base64Data , 
             FkEventTypeId : prevState.FkEventTypeId , 
         }));
-        alert(MaxSeats);
     }
     handleFkEventTypeIdChange(event) {
         var FkEventTypeId = event.target.value;
@@ -169,11 +167,36 @@ class CreateEvent extends Component {
             Base64Data : prevState.Base64Data , 
             FkEventTypeId : prevState.FkEventTypeId , 
         }));
-        alert(Content);
     }
 
     submitHandler(e) {
         e.preventDefault();
+
+        alert('txtEventName:'+this.refs.txtEventName.value);
+        alert('txtEventStartDate:'+this.refs.txtEventStartDate.value);
+        alert('txtEventEndDate:'+this.refs.txtEventEndDate.value);
+        alert('txtMaxSeats:'+this.refs.txtMaxSeats.value);
+        alert('txtFkEventTypeId:'+this.refs.txtFkEventTypeId.value);
+        alert('txtFkEventInterestId:'+this.refs.txtFkEventInterestId.value);
+        alert('txtContent:'+this.refs.txtContent.value);
+        alert('txtBase64bytes:'+this.refs.txtBase64bytes.value);
+        var newEvent = {
+            EventName: this.refs.txtEventName.value,
+            EventStartDate: this.refs.txtEventStartDate.value,
+            EventEndDate: this.refs.txtEventEndDate.value,
+            MaxSeats:this.refs.txtMaxSeats.value,
+            LocationName : 'Etkinlik Yeri' , 
+            Latitude : '' , 
+            Longitude : '' , 
+            Address : '' , 
+            Content : this.refs.txtContent.value,
+            CommunityIds : ["1"] , 
+            InterestIds : [this.refs.txtFkEventInterestId.value], 
+            FileName : '' , 
+            Base64Data : this.refs.txtBase64bytes.value,  
+            FkEventTypeId : this.refs.txtFkEventTypeId.value,
+
+        };
         alert('Etkinlik Oluşturuldu');
     }
     render() {
@@ -194,7 +217,7 @@ class CreateEvent extends Component {
                             <div className="w3-row w3-section">
                                 
                                 <div className="w3-container">
-                                    <input className="w3-input w3-border w3-padding" type="text" placeholder="Etkinlik Adı" onChange={this.handleEventNameChange.bind(this)} id="txtEventName"/>
+                                    <input className="w3-input w3-border w3-padding" type="text"  placeholder="Etkinlik Adı" ref="txtEventName" onChange={this.handleEventNameChange.bind(this)} id="txtEventName"/>
                                 </div>
                                         
                             </div>
@@ -203,13 +226,13 @@ class CreateEvent extends Component {
                                     <div className="w3-container w3-half">
                                         
                                             <label><i className="fa fa-calendar-o"></i> Etkinlik Başlangıç</label>
-                                            <input className="w3-input w3-border" type="text" placeholder="DD MM YYYY" onChange={this.handleEventStartDateChange.bind(this)} name="CheckIn" required=""/>
+                                            <input className="w3-input w3-border" type="text" placeholder="DD MM YYYY" ref="txtEventStartDate"  onChange={this.handleEventStartDateChange.bind(this)} name="CheckIn" required=""/>
                                         
                                     </div>
                                     <div className="w3-container w3-half">
                                         
                                             <label><i className="fa fa-calendar-o"></i> Etkinlik Bitiş</label>
-                                            <input className="w3-input w3-border" type="text" placeholder="DD MM YYYY" onChange={this.handleEventEndDateChange.bind(this)} name="CheckIn" required=""/>
+                                            <input className="w3-input w3-border" type="text" placeholder="DD MM YYYY" ref="txtEventEndDate" onChange={this.handleEventEndDateChange.bind(this)} name="CheckIn" required=""/>
                                         
                                     </div>
                                 
@@ -221,12 +244,12 @@ class CreateEvent extends Component {
                                 
                                     <div className="w3-container w3-half">
                                         <label><i className="fa fa-child"></i>Kişi</label>
-                                    <input className="w3-input w3-border" type="number" value="0" onChange={this.handleMaxSeatsChange.bind(this)} name="Kids"/>
+                                    <input className="w3-input w3-border" type="number" value="0"  ref="txtMaxSeats" onChange={this.handleMaxSeatsChange.bind(this)} name="Kids"/>
                                     
                                     </div>
                                     <div className="w3-container w3-half">
                                         <label><i className="fa fa-star"></i>Etkinlik Tipi</label>
-                                        <select className="w3-select w3-border w3-padding" name="option" onChange={this.handleFkEventTypeIdChange.bind(this)} >
+                                        <select className="w3-select w3-border w3-padding" name="option" ref="txtFkEventTypeId" onChange={this.handleFkEventTypeIdChange.bind(this)} >
                                             <option value="" disabled selected>Etkinlik Tipi Seç</option>
                                             <option value="1type">Seminer</option>
                                             <option value="2type">Konferans</option>
@@ -237,7 +260,7 @@ class CreateEvent extends Component {
                             </div>
                             <div className="w3-row w3-section">
                                     <div className="w3-container ">
-                                        <select className="w3-select w3-border w3-padding" name="option" onChange={this.handleInterestIdsChange.bind(this)}>
+                                        <select className="w3-select w3-border w3-padding" name="option" ref="txtFkEventInterestId" onChange={this.handleInterestIdsChange.bind(this)}>
                                             <option value="" disabled selected>Etkinlik Alanı Seç</option>
                                             <option value="SAU54">C++</option>
                                             <option value="KOU41">C#</option>
@@ -249,13 +272,13 @@ class CreateEvent extends Component {
                             <div className="w3-row w3-section">
                             
                                     <div className="w3-container">
-                                        <textarea className="w3-input w3-border w3-padding" style={resizenone} onChange={this.handleContentChange.bind(this)} placeholder="Etkinlik İçeriği" rows="5"></textarea>
+                                        <textarea className="w3-input w3-border w3-padding" style={resizenone} ref="txtContent" onChange={this.handleContentChange.bind(this)} placeholder="Etkinlik İçeriği" rows="5"></textarea>
                                     </div>
                                 
                             </div>
                             <div className="w3-row w3-section">
                                     <div className="w3-container">
-                                      <input type="file" id="file"  />
+                                      <input type="file" id="file" ref="txtBase64bytes"  />
                             
                                      </div>
                             </div>

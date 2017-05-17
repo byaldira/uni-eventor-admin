@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import '../css/w3.css';
+import * as AuthModule from '../App.Auth';
+import { makeApiRequest } from '../App.Request';
 
 class CreateFaculty extends Component {
      constructor(props) {
@@ -10,11 +12,28 @@ class CreateFaculty extends Component {
             FacultyAddress: '',
             FkUniversityId:''
         };
+        
     }
 
     submitHandler(e) {
         e.preventDefault();
-        alert('Fakülte Ekleme');
+
+        alert(this.refs.ddlUniversity.value);
+        alert(this.refs.txtFacultyName.value);
+        alert(this.refs.txtFacultyAddress.value);
+    
+        var newFaculty={
+             FacultyId: '',
+            FacultyName: this.refs.txtFacultyName.value,
+            FacultyAddress: this.refs.txtFacultyName.value,
+            FkUniversityId:this.refs.ddlUniversity.value
+        } 
+        debugger;
+        makeApiRequest('POST' , 'api/FacultyApi' , newFaculty ,(data)=>{
+            alert('Fakülte Eklendi' );
+        },(error)=>{
+            alert('Hata Oluştu' + error);
+        });
         // Fill User Information from api 
     }
 
@@ -24,7 +43,7 @@ class CreateFaculty extends Component {
             FacultyId : prevState.FacultyId,
             FacultyName: FacultyName,
             FacultyAddress:prevState.Address,
-            FkUniversityId:prevState.Website
+            FkUniversityId:prevState.FkUniversityId
         }));
     }
     handleFacultyAddressChange(event) {
@@ -33,7 +52,7 @@ class CreateFaculty extends Component {
             FacultyId : prevState.FacultyId,
             FacultyName: prevState.FacultyName,
             FacultyAddress:FacultyAddress,
-            FkUniversityId:prevState.Website
+            FkUniversityId:prevState.FkUniversityId
         }));
     }
     handleUniversityIdChange(event) {
@@ -44,7 +63,6 @@ class CreateFaculty extends Component {
             FacultyAddress:prevState.Address,
             FkUniversityId:UniversityId
         }));
-        
     }
     render() {
         var resizenone={
@@ -57,7 +75,7 @@ class CreateFaculty extends Component {
              <h2>Fakülte Tanımlama</h2>
              <div className="w3-row w3-section">
                 <div className="w3-half w3-container">
-                    <select className="w3-select w3-border w3-padding" name="option" onChange={this.handleUniversityIdChange.bind(this)} >
+                    <select className="w3-select w3-border w3-padding" name="option" ref = "ddlUniversity" onChange={this.handleUniversityIdChange.bind(this)} >
                         <option value="" disabled selected>Üniversite Seç</option>
                         <option value="SAU54">SAU - Sakarya Üniversitesi</option>
                         <option value="KOU41">KOU - Kocaeli Üniversitesi</option>
@@ -66,12 +84,12 @@ class CreateFaculty extends Component {
             </div>
             <div className="w3-row w3-section">
                 <div className="w3-container w3-half">
-                    <input className="w3-input w3-border w3-padding" type="text" onChange={this.handleFacultyNameChange.bind(this)}  placeholder="Fakülte Adı" id="txtUniName"/>
+                    <input className="w3-input w3-border w3-padding" type="text" ref = "txtFacultyName" onChange={this.handleFacultyNameChange.bind(this)}  placeholder="Fakülte Adı" id="txtFacultyName"/>
                 </div>
             </div>
             <div className="w3-row w3-section">
                 <div className="w3-container w3-half">
-                        <textarea className="w3-input w3-border w3-padding " style={resizenone} onChange={this.handleFacultyAddressChange.bind(this)} placeholder="Fakülte Adres"></textarea>
+                        <textarea className="w3-input w3-border w3-padding " ref = "txtFacultyAddress" style={resizenone} onChange={this.handleFacultyAddressChange.bind(this)} placeholder="Fakülte Adres"></textarea>
                 </div>
             </div>
             <div className="w3-row ">

@@ -1,6 +1,9 @@
 
 import React, { Component } from 'react';
 import '../css/w3.css';
+import * as AuthModule from '../App.Auth';
+import { makeApiRequest } from '../App.Request';
+
 
 
 class CreateCommunity extends Component {
@@ -14,40 +17,32 @@ class CreateCommunity extends Component {
             FkCreatorId : '', 
             FkResponsibleId : ''
         };
+          AuthModule.login('testuser', 'Cem.123', () => {
+             }, (error) => {
+                alert('failed');
+            });
     }
     submitHandler(e) {
         e.preventDefault();
-        alert('Topluluk Ekleme');
-        // Fill User Information from api 
+       
+        alert(this.refs.txtCommunityName.value);
+        alert(this.refs.txtResponsibleUser.value);
+         var currentTime = new  Date().toLocaleString();
+        var newCommunity = {
+            CommunityId: '',
+            CommunityName: this.refs.txtCommunityName.value,
+            DateCreated: currentTime,
+            LastUpdated: currentTime , 
+            FkCreatorId : 'testuser', 
+            FkResponsibleId : this.refs.txtResponsibleUser.value
+        }
+        makeApiRequest('POST' , 'api/CommunityApi' ,newCommunity ,(data)=>{
+            alert('Topluluk Eklendi' )
+        },(error)=>{
+            alert('Hata Oluştu' + error)
+        });
     }
 
-     handleCommunityNameChange(event) {
-        var CommunityName = event.target.value;
-        var currentTime = new  Date().toLocaleString();
-        this.setState(prevState => ({
-            CommunityId: prevState.CommunityId,
-            CommunityName: CommunityName , 
-            DateCreated: currentTime,
-            LastUpdated:currentTime , 
-            FkCreatorId : 'testuser', 
-            FkResponsibleId : 'testuser'
-        }));
-        
-    }
-
-     handleFkResponsibleIdChange(event) {
-        var FkResponsibleId = event.target.value;
-        var currentTime = new  Date().toLocaleString();
-        this.setState(prevState => ({
-            CommunityId: prevState.CommunityId,
-            CommunityName: prevState.CommunityName , 
-            DateCreated: currentTime,
-            LastUpdated:currentTime , 
-            FkCreatorId : 'testuser', 
-            FkResponsibleId : FkResponsibleId
-        }));
-        
-    }
     render() {
         
         return (
@@ -58,10 +53,10 @@ class CreateCommunity extends Component {
                 <div className="w3-row w3-section">
                     <div className="w3-threequarter">
                         <div className="w3-container w3-half">
-                            <input className="w3-input w3-border w3-padding" type="text" placeholder="Topluluk Adi"  onChange={this.handleCommunityNameChange.bind(this)} id="txtCommunityName" />
+                            <input className="w3-input w3-border w3-padding" type="text" ref="txtCommunityName" placeholder="Topluluk Adi"  id="txtCommunityName" />
                         </div>
                         <div className="w3-container w3-half">
-                            <input className="w3-input w3-border w3-padding" type="text" placeholder="Topluluk Baskani Kullanici Adi" onChange={this.handleFkResponsibleIdChange.bind(this)}  id="txtUniName" />
+                            <input className="w3-input w3-border w3-padding" type="text" ref="txtResponsibleUser" placeholder="Topluluk Baskani Kullanici Adi"  id="txtUniName" />
                         </div>
                     </div>
                     <div className="w3-quarter"></div>

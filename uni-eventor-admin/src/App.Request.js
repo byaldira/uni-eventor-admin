@@ -24,7 +24,6 @@ export function makeApiRequest(requestMethd, relUrl, data, onsuccess, onfailure,
     xhr.onload = function () {
         var data = JSON.parse(xhr.responseText);
         var error = parseError(data);
-        debugger;
         if (error) {
             onfailure(error);
         }

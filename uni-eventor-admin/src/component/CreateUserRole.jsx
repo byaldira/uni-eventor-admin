@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import '../css/w3.css';
+import * as AuthModule from '../App.Auth';
+import { makeApiRequest } from '../App.Request';
 
 class CreateUserRole extends Component {
     constructor(props) {
@@ -12,7 +14,16 @@ class CreateUserRole extends Component {
 
     submitHandler(e) {
         e.preventDefault();
-        alert('Kullanıcı Rolü Oluşturuldu.');
+        var newUserRole = {
+             UserName : this.refs.txtUserName.value,
+            RoleName :this.refs.ddlRole.value
+        }
+        makeApiRequest('POST' , 'api/UserRoleApi' , newUserRole ,(data)=>{
+            alert('Kullanıcıya Rol Eklendi' );
+        },(error)=>{
+            alert('Hata Oluştu' + error);
+        });
+       
         // Fill User Information from api 
     }
 
@@ -23,7 +34,7 @@ class CreateUserRole extends Component {
             RoleName : prevState.RoleName
 
         }));
-        alert(UserName);
+      
      }
 
      handleRoleNameChange(event) {
@@ -32,7 +43,7 @@ class CreateUserRole extends Component {
             UserName: prevState.UserName  , 
             RoleName : RoleName
         }));
-        alert(RoleName);
+      
      }
 
     render() {
@@ -45,10 +56,10 @@ class CreateUserRole extends Component {
                     <div className="w3-row w3-section">
                         <div className="w3-threequarter">
                             <div className="w3-container w3-quarter">
-                                <input className="w3-input w3-border w3-padding" type="text" placeholder="Kullanicı Adi" id="txtUserName" onChange={this.handleUserNameChange.bind(this)}/>
+                                <input className="w3-input w3-border w3-padding" type="text" ref="txtUserName" placeholder="Kullanicı Adi" id="txtUserName" onChange={this.handleUserNameChange.bind(this)}/>
                             </div>
                             <div className="w3-container w3-threequarter">
-                                <select className="w3-select w3-border w3-padding" name="option"  onChange={this.handleRoleNameChange.bind(this)} >
+                                <select className="w3-select w3-border w3-padding" name="option" ref="ddlRole" onChange={this.handleRoleNameChange.bind(this)} >
                                 <option value="" disabled selected>Role Seç</option>
                                 <option value="EVNT_SPR">EVNT_SPR</option>
                                 <option value="EVNT_USR">EVNT_USR</option>

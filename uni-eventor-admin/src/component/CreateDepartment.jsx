@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import '../css/w3.css';
+import * as AuthModule from '../App.Auth';
+import { makeApiRequest } from '../App.Request';
 
 class CreateDepartment extends Component {
      constructor(props) {
@@ -13,8 +15,22 @@ class CreateDepartment extends Component {
     }
     submitHandler(e) {
         e.preventDefault();
-        alert('Bölüm Ekle');
-        // Fill User Information from api 
+        // alert(this.refs.txtDepartmentName.value);
+        // alert(this.refs.txtDepartmentAddress.value);
+        // alert(this.refs.ddlFacultyId.value);
+
+        var newDepartment = {
+            DepartmentId: '',
+            DepartmentName: this.refs.txtDepartmentName.value,
+            DepartmentAddress: this.refs.txtDepartmentAddress.value,
+            FkFacultyId:this.refs.ddlFacultyId.value
+        }
+        makeApiRequest('POST' , 'api/DepartmentApi' , newDepartment ,(data)=>{
+            alert('Bölüm Eklendi' );
+        },(error)=>{
+            alert('Hata Oluştu' + error);
+        });
+      
     }
 
     handleDepartmentNameChange(event) {
@@ -23,7 +39,7 @@ class CreateDepartment extends Component {
             DepartmentId : prevState.DepartmentId,
             DepartmentName: DepartmentName,
             DepartmentAddress:prevState.Address,
-            FkFacultyId:prevState.Website
+            FkFacultyId:prevState.FkFacultyId
         }));
     }
     handleDepartmentAddressChange(event) {
@@ -32,7 +48,7 @@ class CreateDepartment extends Component {
              DepartmentId : prevState.DepartmentId,
             DepartmentName: prevState.DepartmentName,
             DepartmentAddress:DepartmentAddress,
-            FkFacultyId:prevState.Website
+            FkFacultyId:prevState.FkFacultyId
         }));
     }
     handleFkFacultyIdChange(event) {
@@ -56,7 +72,7 @@ class CreateDepartment extends Component {
 
              <h2>Bölüm Tanımlama</h2>
              <div className="w3-row w3-section">
-                <div className="w3-half w3-container">
+                <div className="w3-half w3-container">Enable False olmalı 
                     <select className="w3-select w3-border w3-padding" name="option" >
                         <option value="" disabled selected>Üniversite Seç</option>
                         <option value="SAU54">SAU - Sakarya Üniversitesi</option>
@@ -66,7 +82,7 @@ class CreateDepartment extends Component {
             </div>
             <div className="w3-row w3-section">
                 <div className="w3-container w3-half">
-                    <select className="w3-select w3-border w3-padding" name="option" onChange={this.handleFkFacultyIdChange.bind(this)}>
+                    <select className="w3-select w3-border w3-padding" ref="ddlFacultyId" name="option" onChange={this.handleFkFacultyIdChange.bind(this)}>
                         <option value="" disabled selected>Fakülte Seç</option>
                         <option value="BBF">BBF - Bilgisayar ve Bilişim Bilimleri Fakültesi</option>
                         <option value="MF">MF - Mühendislik Fakültesi</option>
@@ -75,12 +91,12 @@ class CreateDepartment extends Component {
             </div>
             <div className="w3-row w3-section">
                 <div className="w3-container w3-half">
-                    <input className="w3-input w3-border w3-padding" type="text" onChange={this.handleDepartmentNameChange.bind(this)} placeholder="Bölüm Adı" id="txtUniName"/>
+                    <input className="w3-input w3-border w3-padding"  ref="txtDepartmentName" type="text" onChange={this.handleDepartmentNameChange.bind(this)} placeholder="Bölüm Adı" id="txtUniName"/>
                 </div>
             </div>
             <div className="w3-row w3-section">
                 <div className="w3-container w3-half">
-                        <textarea className="w3-input w3-border w3-padding " style={resizenone} onChange={this.handleDepartmentAddressChange.bind(this)}   placeholder="Bölüm Adres"></textarea>
+                        <textarea className="w3-input w3-border w3-padding "  ref="txtDepartmentAddress" style={resizenone} onChange={this.handleDepartmentAddressChange.bind(this)}   placeholder="Bölüm Adres"></textarea>
                 </div>
             </div>
             <div className="w3-row ">

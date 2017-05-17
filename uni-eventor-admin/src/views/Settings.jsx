@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../css/w3.css';
 import UserInformation from '../component/UserInformation.jsx'
 import UserInterests from '../component/UserInterests.jsx'
-
+import JoinedEvents from '../component/JoinedEvents.jsx'
 class Settings extends Component {
     handleClick = (e, cityName) => {
         // e burada click icin bildigimiz event nesnesi
@@ -32,7 +32,7 @@ class Settings extends Component {
                      <span onClick={(e) => this.handleClick('IlgiAlanlarim', this).bind(this)}>
                         <div className="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Ilgi Alanlarim</div>
                     </span>
-                     <span onClick={(e) => this.handleClick('KullaniciRol', this).bind(this)}>
+                     <span onClick={(e) => this.handleClick('JoinedEvents', this).bind(this)}>
                         <div className="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Katildigim Etkinlikler</div>
                     </span>
                      
@@ -43,6 +43,9 @@ class Settings extends Component {
               </div>
              <div id="IlgiAlanlarim" className="w3-container city" style={displaynone} >
                     <UserInterests />
+              </div>
+              <div id="JoinedEvents" className="w3-container city" style={displaynone} >
+                    <JoinedEvents />
               </div>
               
             </div>
