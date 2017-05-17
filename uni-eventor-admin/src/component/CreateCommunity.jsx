@@ -4,6 +4,24 @@ import '../css/w3.css';
 
 
 class CreateCommunity extends Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+            CommunityId: '',
+            CommunityName: '',
+            DateCreated: '',
+            LastUpdated:'' , 
+            FkCreatorId : '', 
+            FkResponsibleId : ''
+        };
+    }
+    submitHandler(e) {
+        e.preventDefault();
+        alert('Topluluk Ekleme');
+        // Fill User Information from api 
+    }
+
+
     render() {
         
         return (

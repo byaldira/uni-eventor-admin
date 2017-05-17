@@ -20,29 +20,29 @@ class CreateDepartment extends Component {
     handleDepartmentNameChange(event) {
         var DepartmentName = event.target.value;
         this.setState(prevState => ({
+            DepartmentId : prevState.DepartmentId,
             DepartmentName: DepartmentName,
             DepartmentAddress:prevState.Address,
             FkFacultyId:prevState.Website
         }));
-         alert(DepartmentName);
     }
     handleDepartmentAddressChange(event) {
         var DepartmentAddress = event.target.value;
         this.setState(prevState => ({
+             DepartmentId : prevState.DepartmentId,
             DepartmentName: prevState.DepartmentName,
             DepartmentAddress:DepartmentAddress,
             FkFacultyId:prevState.Website
         }));
-         alert(DepartmentAddress);
     }
     handleFkFacultyIdChange(event) {
         var FkFacultyId = event.target.value;
         this.setState(prevState => ({
+            DepartmentId : prevState.DepartmentId,
             DepartmentName: prevState.DepartmentName,
             DepartmentAddress:prevState.DepartmentAddress,
             FkFacultyId:FkFacultyId
         }));
-        alert(FkFacultyId);
     }
 
 
@@ -52,6 +52,8 @@ class CreateDepartment extends Component {
        }
        return (
            <div>
+                  <form className="w3-text-blue-gray" onSubmit={this.submitHandler.bind(this)}>
+
              <h2>Bölüm Tanımlama</h2>
              <div className="w3-row w3-section">
                 <div className="w3-half w3-container">
@@ -88,6 +90,7 @@ class CreateDepartment extends Component {
                     </div>
                 </div>
             </div>
+            </form>
            </div>
        );
     }

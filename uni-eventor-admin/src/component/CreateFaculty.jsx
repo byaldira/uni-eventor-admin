@@ -21,6 +21,7 @@ class CreateFaculty extends Component {
     handleFacultyNameChange(event) {
         var FacultyName = event.target.value;
         this.setState(prevState => ({
+            FacultyId : prevState.FacultyId,
             FacultyName: FacultyName,
             FacultyAddress:prevState.Address,
             FkUniversityId:prevState.Website
@@ -29,6 +30,7 @@ class CreateFaculty extends Component {
     handleFacultyAddressChange(event) {
         var FacultyAddress = event.target.value;
         this.setState(prevState => ({
+            FacultyId : prevState.FacultyId,
             FacultyName: prevState.FacultyName,
             FacultyAddress:FacultyAddress,
             FkUniversityId:prevState.Website
@@ -37,6 +39,7 @@ class CreateFaculty extends Component {
     handleUniversityIdChange(event) {
         var UniversityId = event.target.value;
         this.setState(prevState => ({
+            FacultyId : prevState.FacultyId,
             FacultyName: prevState.FacultyName,
             FacultyAddress:prevState.Address,
             FkUniversityId:UniversityId
