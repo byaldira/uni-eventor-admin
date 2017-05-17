@@ -2,9 +2,23 @@ import React, { Component } from 'react';
 import '../css/w3.css';
 
 class CreateEventType extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            EventTypeName : ''
+        };
+    }
+
+    handleEventTypeNameChange(event) {
+        var EventTypeName = event.target.value;
+        this.setState(prevState => ({
+            EventTypeName: EventTypeName 
+        }));
+        alert(EventTypeName);
+     }
     submitHandler(e) {
         e.preventDefault();
-        alert('Register');
+        alert('Etkinlik Tipi Oluşturuldu');
         // Fill User Information from api 
     }
 
@@ -12,10 +26,12 @@ class CreateEventType extends Component {
        
        return (
            <div>
+                <form className="w3-text-blue-gray" onSubmit={this.submitHandler.bind(this)}>
+
                <h2>Etkinlik Tipi</h2>
                     <div className="w3-row w3-section">
                         <div className="w3-container w3-half">
-                            <input className="w3-input w3-border w3-padding" type="text" placeholder="Etkinlik Tipi" id="txtEventTypeName"/>
+                            <input className="w3-input w3-border w3-padding" type="text" onChange={this.handleEventTypeNameChange.bind(this)} placeholder="Etkinlik Tipi" id="txtEventTypeName"/>
                         </div>
                     </div>
                     <div className="w3-row ">
@@ -25,6 +41,7 @@ class CreateEventType extends Component {
                             </div>
                         </div>
                     </div>
+                    </form>
            </div>
        );
     }

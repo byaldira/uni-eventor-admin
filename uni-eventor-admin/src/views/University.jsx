@@ -5,6 +5,7 @@ import CreateFaculty from '../component/CreateFaculty.jsx'
 import CreateDepartment from '../component/CreateDepartment.jsx'
 
 class University extends Component {
+   
      handleClick = (e, cityName) => {
         // e burada click icin bildigimiz event nesnesi
         var i, x, tablinks;
@@ -20,6 +21,7 @@ class University extends Component {
         e.currentTarget.firstElementChild.className += " w3-border-red";
 
     }
+     
     render() {
       var displaynone={
           display : 'none'

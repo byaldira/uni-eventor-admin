@@ -90,7 +90,7 @@ class CreateDepartment extends Component {
                     </div>
                 </div>
             </div>
-            </form>
+            </form> 
            </div>
        );
     }
