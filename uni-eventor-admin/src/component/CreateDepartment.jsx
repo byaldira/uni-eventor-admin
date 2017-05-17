@@ -2,11 +2,49 @@ import React, { Component } from 'react';
 import '../css/w3.css';
 
 class CreateDepartment extends Component {
+     constructor(props) {
+        super(props);
+        this.state = {
+            DepartmentId: '',
+            DepartmentName: '',
+            DepartmentAddress: '',
+            FkFacultyId:''
+        };
+    }
     submitHandler(e) {
         e.preventDefault();
-        alert('Register');
+        alert('Bölüm Ekle');
         // Fill User Information from api 
     }
+
+    handleDepartmentNameChange(event) {
+        var DepartmentName = event.target.value;
+        this.setState(prevState => ({
+            DepartmentName: DepartmentName,
+            DepartmentAddress:prevState.Address,
+            FkFacultyId:prevState.Website
+        }));
+         alert(DepartmentName);
+    }
+    handleDepartmentAddressChange(event) {
+        var DepartmentAddress = event.target.value;
+        this.setState(prevState => ({
+            DepartmentName: prevState.DepartmentName,
+            DepartmentAddress:DepartmentAddress,
+            FkFacultyId:prevState.Website
+        }));
+         alert(DepartmentAddress);
+    }
+    handleFkFacultyIdChange(event) {
+        var FkFacultyId = event.target.value;
+        this.setState(prevState => ({
+            DepartmentName: prevState.DepartmentName,
+            DepartmentAddress:prevState.DepartmentAddress,
+            FkFacultyId:FkFacultyId
+        }));
+        alert(FkFacultyId);
+    }
+
 
     render() {
           var resizenone={
@@ -17,7 +55,7 @@ class CreateDepartment extends Component {
              <h2>Bölüm Tanımlama</h2>
              <div className="w3-row w3-section">
                 <div className="w3-half w3-container">
-                    <select className="w3-select w3-border w3-padding" name="option">
+                    <select className="w3-select w3-border w3-padding" name="option" >
                         <option value="" disabled selected>Üniversite Seç</option>
                         <option value="SAU54">SAU - Sakarya Üniversitesi</option>
                         <option value="KOU41">KOU - Kocaeli Üniversitesi</option>
@@ -26,21 +64,21 @@ class CreateDepartment extends Component {
             </div>
             <div className="w3-row w3-section">
                 <div className="w3-container w3-half">
-                    <select className="w3-select w3-border w3-padding" name="option">
+                    <select className="w3-select w3-border w3-padding" name="option" onChange={this.handleFkFacultyIdChange.bind(this)}>
                         <option value="" disabled selected>Fakülte Seç</option>
-                        <option value="SAU54">BBF - Bilgisayar ve Bilişim Bilimleri Fakültesi</option>
-                        <option value="KOU41">MF - Mühendislik Fakültesi</option>
+                        <option value="BBF">BBF - Bilgisayar ve Bilişim Bilimleri Fakültesi</option>
+                        <option value="MF">MF - Mühendislik Fakültesi</option>
                     </select>
                 </div>
             </div>
             <div className="w3-row w3-section">
                 <div className="w3-container w3-half">
-                    <input className="w3-input w3-border w3-padding" type="text" placeholder="Bölüm Adı" id="txtUniName"/>
+                    <input className="w3-input w3-border w3-padding" type="text" onChange={this.handleDepartmentNameChange.bind(this)} placeholder="Bölüm Adı" id="txtUniName"/>
                 </div>
             </div>
             <div className="w3-row w3-section">
                 <div className="w3-container w3-half">
-                        <textarea className="w3-input w3-border w3-padding " style={resizenone}   placeholder="Bölüm Adres"></textarea>
+                        <textarea className="w3-input w3-border w3-padding " style={resizenone} onChange={this.handleDepartmentAddressChange.bind(this)}   placeholder="Bölüm Adres"></textarea>
                 </div>
             </div>
             <div className="w3-row ">
